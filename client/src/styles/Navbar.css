@@ -1,0 +1,252 @@
+.saas-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: #ffffff;
+  border-bottom: 1px solid #f1f0fb;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.02);
+  transition: all var(--transition-fast);
+}
+
+.saas-nav-container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0.85rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.saas-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: none;
+}
+
+/* Custom Official EduGen AI Logo Icon Wrapper */
+.saas-logo-cap-wrapper {
+  width: 36px;
+  height: 36px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.saas-logo-cap-img {
+  width: 100%;
+  height: 162%;
+  object-fit: cover;
+  object-position: top center;
+  mix-blend-mode: multiply;
+}
+
+.saas-logo-text {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #1e1b4b;
+  letter-spacing: -0.02em;
+}
+
+.saas-logo-text .logo-highlight {
+  color: #7c3aed;
+  margin-left: 1px;
+}
+
+.saas-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1.85rem;
+}
+
+.nav-link {
+  font-size: 0.925rem;
+  font-weight: 500;
+  color: #475569;
+  text-decoration: none;
+  padding: 0.4rem 0.2rem;
+  position: relative;
+  transition: color var(--transition-fast);
+  cursor: pointer;
+}
+
+.nav-link:not(.active) {
+  color: #475569;
+  font-weight: 500;
+}
+
+.nav-link:not(.active):hover {
+  color: #7c3aed;
+}
+
+.nav-link.active {
+  color: #7c3aed;
+  font-weight: 700;
+}
+
+.nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: -0.95rem;
+  left: 0;
+  right: 0;
+  height: 2.5px;
+  background-color: #7c3aed;
+  border-radius: 9999px;
+}
+
+.saas-nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.saas-btn-text {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #1e1b4b;
+  text-decoration: none;
+  padding: 0.45rem 1.15rem;
+  border-radius: 10px;
+  border: 1.5px solid #e2e8f0;
+  background-color: #ffffff;
+  transition: all var(--transition-fast);
+}
+
+.saas-btn-text:hover {
+  color: #0f172a;
+  background-color: #f8fafc;
+  border-color: #cbd5e1;
+}
+
+.saas-nav-actions .saas-btn-primary {
+  background-color: #7c3aed;
+  color: #ffffff;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 0.48rem 1.25rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 14px rgba(124, 58, 237, 0.25);
+  transition: all var(--transition-fast);
+}
+
+.saas-nav-actions .saas-btn-primary:hover {
+  background-color: #6d28d9;
+  transform: translateY(-1px);
+}
+
+.user-profile-menu {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.user-avatar-pill {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.3rem 0.75rem 0.3rem 0.3rem;
+  background-color: #f5f3ff;
+  border: 1px solid #ddd6fe;
+  border-radius: 9999px;
+}
+
+.user-avatar-circle {
+  width: 28px;
+  height: 28px;
+  background: linear-gradient(135deg, #7c3aed 0%, #4f46e5 100%);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.85rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-name-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-main);
+  max-width: 120px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.saas-logout-btn {
+  background: #fff1f2;
+  border: 1px solid #fecaca;
+  color: #dc2626;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  padding: 0.4rem 0.9rem;
+  border-radius: 8px;
+  transition: all var(--transition-fast);
+  cursor: pointer;
+}
+
+.saas-logout-btn:hover {
+  background-color: #fee2e2;
+  color: #b91c1c;
+  border-color: #fca5a5;
+  transform: translateY(-1px);
+}
+
+.mobile-menu-btn {
+  display: none;
+  background: none;
+  font-size: 1.3rem;
+  color: #1e1b4b;
+  padding: 0.3rem 0.5rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.mobile-menu-btn:hover {
+  background: #f5f3ff;
+  border-color: #c4b5fd;
+}
+
+/* Responsive Mobile Navigation */
+@media (max-width: 900px) {
+  .mobile-menu-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .saas-nav-links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: #ffffff;
+    border-bottom: 1px solid #ede9fe;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem 1.5rem;
+    gap: 0.85rem;
+    box-shadow: 0 8px 24px rgba(109, 40, 217, 0.08);
+    display: none;
+    z-index: 999;
+  }
+
+  .saas-nav-links.active {
+    display: flex;
+  }
+
+  .nav-link.active::after {
+    display: none;
+  }
+
+  .saas-nav-actions .saas-btn-text,
+  .saas-nav-actions .saas-btn-primary {
+    display: none;
+  }
+}

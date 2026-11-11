@@ -1,0 +1,490 @@
+/* ============================================================
+   FLASHCARDS PAGE — EduGenAI
+   Clean, properly aligned 760px centered layout
+   ============================================================ */
+
+.flashcards-page-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-main);
+}
+
+/* ─── 1. CENTERED MAIN CONTAINER (760px) ──────────────────── */
+.flashcards-container {
+  width: 100%;
+  max-width: 760px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 2.25rem 1.5rem 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+/* ─── 2. HEADER AREA ──────────────────────────────────────── */
+.flashcards-header {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 1.75rem;
+  text-align: left;
+}
+
+.flashcards-header-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
+}
+
+.flashcards-badge {
+  font-size: 0.8125rem;
+}
+
+.back-to-notes-btn {
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.45rem 1rem;
+  height: 36px;
+  white-space: nowrap;
+}
+
+.flashcards-title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--text-main);
+  letter-spacing: -0.025em;
+  margin: 0.2rem 0 0;
+  line-height: 1.2;
+}
+
+.flashcards-material-label {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.flashcards-material-label strong {
+  color: var(--text-main);
+  font-weight: 600;
+}
+
+/* ─── 3. PROGRESS SECTION ─────────────────────────────────── */
+.flashcards-progress-section {
+  width: 100%;
+  margin-bottom: 1.75rem;
+}
+
+.progress-labels-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.55rem;
+  width: 100%;
+}
+
+.card-count {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--text-main);
+  letter-spacing: -0.01em;
+}
+
+.progress-percent {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--primary);
+  background-color: var(--primary-light);
+  padding: 0.15rem 0.6rem;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--primary-border);
+}
+
+.progress-track {
+  width: 100%;
+  height: 8px;
+  background-color: var(--border-color);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary) 0%, var(--accent-purple) 100%);
+  border-radius: var(--radius-full);
+  transition: width 0.35s ease;
+}
+
+/* ─── 4. 3D FLIP FLASHCARD (300px) ────────────────────────── */
+.flip-card-wrapper {
+  perspective: 1200px;
+  width: 100%;
+  min-height: 300px;
+  height: 300px;
+  cursor: pointer;
+  user-select: none;
+  outline: none;
+  margin-bottom: 1.5rem;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+}
+
+.flip-card-inner.is-flipped {
+  transform: rotateY(180deg);
+}
+
+/* Shared front & back face styles */
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.06), 0 2px 6px -1px rgba(15, 23, 42, 0.04);
+  padding: 1.5rem 2rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: left;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+/* Card hover lift effect */
+.flip-card-wrapper:hover .flip-card-front,
+.flip-card-wrapper:hover .flip-card-back {
+  border-color: var(--primary-border);
+  box-shadow: 0 10px 25px -4px rgba(79, 70, 229, 0.12), 0 4px 10px -2px rgba(15, 23, 42, 0.04);
+}
+
+/* Back face (Answer) */
+.flip-card-back {
+  transform: rotateY(180deg);
+  background: linear-gradient(145deg, #fbfbfe 0%, #ffffff 65%);
+  border-color: #ddd6fe;
+}
+
+/* Top badge row */
+.card-header-row {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.card-badge-question,
+.card-badge-answer {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  padding: 0.2rem 0.65rem;
+}
+
+.card-topic-tag {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  background-color: #f8fafc;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-full);
+  padding: 0.15rem 0.65rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 260px;
+}
+
+/* Central content area */
+.card-content-area {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1rem 0.75rem;
+  width: 100%;
+  overflow-y: auto;
+}
+
+.card-text {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text-main);
+  line-height: 1.5;
+  margin: 0;
+  max-width: 640px;
+  text-align: center;
+  letter-spacing: -0.015em;
+  word-break: break-word;
+}
+
+.card-text-answer {
+  font-size: 1.06rem;
+  font-weight: 450;
+  color: #1e293b;
+  line-height: 1.65;
+  margin: 0;
+  max-width: 640px;
+  text-align: center;
+  word-break: break-word;
+}
+
+/* Bottom divider and hint */
+.card-footer-divider {
+  width: 100%;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  padding-top: 0.85rem;
+  border-top: 1px dashed var(--border-color);
+  user-select: none;
+}
+
+.flip-hint-icon {
+  font-size: 0.95rem;
+  color: var(--primary);
+  display: inline-block;
+  transition: transform var(--transition-normal);
+}
+
+.flip-card-wrapper:hover .flip-hint-icon {
+  transform: rotate(180deg);
+}
+
+/* ─── 5. CONTROLS ROW ─────────────────────────────────────── */
+.flashcards-controls-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.85rem;
+  width: 100%;
+  margin-top: 0.25rem;
+  margin-bottom: 0.85rem;
+}
+
+.control-btn {
+  height: 42px;
+  padding: 0 1.25rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-fast);
+}
+
+.control-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none !important;
+}
+
+.flip-toggle-btn {
+  background-color: var(--bg-card);
+  border-color: var(--border-color);
+}
+
+.flip-toggle-btn:hover:not(:disabled) {
+  border-color: var(--primary-border);
+  color: var(--primary);
+  background-color: var(--primary-light);
+}
+
+/* Keyboard hint */
+.keyboard-shortcuts-hint {
+  text-align: center;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  width: 100%;
+}
+
+.keyboard-shortcuts-hint kbd {
+  background-color: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  border-radius: 4px;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.08);
+  color: var(--text-secondary);
+  display: inline-block;
+  font-family: inherit;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.1rem 0.4rem;
+  line-height: 1.3;
+}
+
+/* ─── 6. DECK COMPLETED BANNER ────────────────────────────── */
+.deck-completed-banner {
+  background: linear-gradient(135deg, #ecfdf5 0%, #f0fdf4 100%);
+  border: 1px solid #a7f3d0;
+  border-radius: var(--radius-lg);
+  padding: 1.5rem 1.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  text-align: left;
+  box-shadow: var(--shadow-sm);
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+.banner-text h3 {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #065f46;
+  margin: 0 0 0.25rem;
+}
+
+.banner-text p {
+  font-size: 0.86rem;
+  color: #047857;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.quiz-continue-btn {
+  flex-shrink: 0;
+  white-space: nowrap;
+  padding: 0.7rem 1.35rem;
+  font-size: 0.88rem;
+}
+
+/* ─── 7. LOADING & ERROR STATES ───────────────────────────── */
+.flashcards-loading-box,
+.flashcards-error-box {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 4rem 2rem;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2rem;
+  width: 100%;
+}
+
+.flashcards-loading-box h2,
+.flashcards-error-box h2 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin: 0;
+}
+
+.flashcards-loading-box p,
+.flashcards-error-box p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin: 0;
+  max-width: 420px;
+}
+
+.error-icon {
+  font-size: 2.5rem;
+  line-height: 1;
+}
+
+/* ─── 8. RESPONSIVE BREAKPOINTS ───────────────────────────── */
+@media (max-width: 768px) {
+  .flashcards-container {
+    padding-top: 1.75rem;
+    padding-bottom: 3rem;
+  }
+
+  .flashcards-title {
+    font-size: 1.65rem;
+  }
+
+  .flip-card-wrapper {
+    min-height: 310px;
+    height: 310px;
+  }
+
+  .flip-card-front,
+  .flip-card-back {
+    padding: 1.25rem 1.5rem 1.15rem;
+  }
+
+  .card-text {
+    font-size: 1.15rem;
+  }
+
+  .card-text-answer {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 580px) {
+  .flashcards-header-top-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .back-to-notes-btn {
+    align-self: flex-start;
+  }
+
+  .flashcards-controls-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.65rem;
+  }
+
+  .control-btn {
+    width: 100%;
+  }
+
+  .flip-card-wrapper {
+    min-height: 330px;
+    height: 330px;
+  }
+
+  .keyboard-shortcuts-hint {
+    display: none;
+  }
+
+  .deck-completed-banner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .quiz-continue-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
